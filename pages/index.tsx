@@ -1,5 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import GitHubUserCard from '../components/GitHubUserCard';
+import SearchBar from '../components/SearchBar';
+import TheHeader from '../components/TheHeader';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +17,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <h1>Hello, world!</h1>
+        <TheHeader />
+        <SearchBar />
+        <GitHubUserCard />
       </main>
     </div>
   );
