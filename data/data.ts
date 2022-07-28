@@ -69,3 +69,13 @@ export const defaultGitHubUser: IGitHubUser = {
   created_at: '2015-02-03T07:56:26Z',
   updated_at: '2015-02-03T07:56:26Z',
 };
+
+export enum Theme {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
+export type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
