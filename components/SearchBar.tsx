@@ -13,13 +13,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
 
     if (!inputRef.current) return;
 
-    if (inputRef.current.value.trim() === '') return;
+    const searchValue = inputRef.current.value
+      .trim()
+      .toLowerCase()
+      .replaceAll(' ', '');
+
+    if (searchValue === '') return;
 
     let data;
 
     try {
       const response = await fetch(
-        `https://api.github.com/users/${inputRef.current.value}`
+        `https://api.github.com/users/${searchValue}`
       );
 
       data = await response.json();
