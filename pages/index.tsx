@@ -8,6 +8,16 @@ import { IGitHubUser, defaultGitHubUser } from '../data/data';
 
 const Home: NextPage = () => {
   const [gitHubUser, setGitHubUser] = useState<IGitHubUser>(defaultGitHubUser);
+  const [gitHubUserWasFound, setGitHubUserWasFound] = useState(true);
+
+  const onSubmitHandler = (gitHubUser: IGitHubUser, wasFound: boolean) => {
+    if (!wasFound) setGitHubUserWasFound(false);
+
+    if (wasFound) {
+      setGitHubUserWasFound(true);
+      setGitHubUser(gitHubUser);
+    }
+  };
 
   return (
     <div>
@@ -24,8 +34,11 @@ const Home: NextPage = () => {
         <TheHeader />
 
         <section className="grid gap-6">
-          <SearchBar onSubmit={setGitHubUser} />
-          <GitHubUserCard gitHubUser={gitHubUser} />
+          <SearchBar onSubmit={onSubmitHandler} />
+          <GitHubUserCard
+            gitHubUser={gitHubUser}
+            gitHubUserWasFound={gitHubUserWasFound}
+          />
         </section>
       </main>
     </div>

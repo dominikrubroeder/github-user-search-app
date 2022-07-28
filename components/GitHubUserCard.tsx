@@ -8,10 +8,16 @@ import IconTwitter from './icons/IconTwitter';
 
 interface GitHubUserCardProps {
   gitHubUser: IGitHubUser;
+  gitHubUserWasFound: boolean;
 }
 
-const GitHubUserCard: React.FC<GitHubUserCardProps> = ({ gitHubUser }) => {
+const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
+  gitHubUser,
+  gitHubUserWasFound,
+}) => {
   const notAvailable = 'Not available';
+
+  if (!gitHubUserWasFound) return <div>Not found.</div>;
 
   return (
     <div className="flex items-start bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full">
@@ -20,6 +26,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({ gitHubUser }) => {
           src={gitHubUser.avatar_url}
           alt={`${gitHubUser.login} avatar image`}
           layout="fill"
+          className="rounded-full"
         />
       </div>
 

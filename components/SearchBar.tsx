@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import IconSearch from './icons/IconSearch';
+import { IGitHubUser, defaultGitHubUser } from '../data/data';
 
 interface SearchBarProps {
-  onSubmit: (gitHubUserData: any) => void;
+  onSubmit: (gitHubUserData: IGitHubUser, wasFound: boolean) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
@@ -16,7 +17,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
     const searchValue = inputRef.current.value
       .trim()
       .toLowerCase()
-      .replaceAll(' ', '');
+      .replaceAll(' ', '')
+      .replaceAll('ä', 'ae')
+      .replaceAll('ö', 'oe')
+      .replaceAll('ü', 'ue');
 
     if (searchValue === '') return;
 
@@ -34,7 +38,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
       console.log(error);
     }
 
-    onSubmit(data);
+    if (data.message) onSubmit(defaultGitHubUser, false);
+
+    if (!data.message) onSubmit(data, true);
   };
 
   return (
