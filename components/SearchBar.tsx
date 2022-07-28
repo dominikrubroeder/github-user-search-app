@@ -53,12 +53,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit, setIsLoading }) => {
   };
 
   return (
-    <div className="flex items-center bg-white p-2.5 gap-8 rounded-xl max-w-screen-md m-auto w-full">
-      <div className="pl-8">
+    <div className="flex items-center gap-4 bg-white p-2.5 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 md:gap-8 md:m-auto md:w-full">
+      <div className="pl-4 md:pl-8">
         <IconSearch />
       </div>
       <form
-        className="flex items-center justify-between gap-2 flex-1"
+        className="flex items-center justify-between gap-4 flex-1"
         onSubmit={(e) => onSubmitHandler(e)}
       >
         <input

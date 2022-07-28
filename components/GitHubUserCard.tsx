@@ -37,23 +37,25 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
     );
 
   return (
-    <div className="flex items-start bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full animate-scale">
-      <div className="relative rounded-full w-28 h-28">
-        <Image
-          src={gitHubUser.avatar_url}
-          alt={`${gitHubUser.login} avatar image`}
-          layout="fill"
-          className="rounded-full"
-        />
+    <div className="relative bg-white p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale md:m-auto md:w-full md:flex md:items-start md:p-12">
+      <div className="absolute right-4 top-4 md:relative">
+        <div className="relative rounded-full w-[4.375rem] h-[4.375rem] md:w-28 md:h-28">
+          <Image
+            src={gitHubUser.avatar_url}
+            alt={`${gitHubUser.login} avatar image`}
+            layout="fill"
+            className="rounded-full"
+          />
+        </div>
       </div>
 
       <div className="grid gap-5 flex-1">
         <div>
-          <header className="flex items-center justify-between gap-2">
-            <h1 className="font-bold text-[1.625rem]">
+          <header className="flex flex-col mt-4 md:mt-0 md:flex-row md:items-center md:justify-between md:gap-2">
+            <h1 className="font-bold text-[1.625rem] order-2 md:order-1">
               {gitHubUser.name ? gitHubUser.name : gitHubUser.login}
             </h1>
-            <span className="text-app-primary-lm-blue-desaturated">
+            <span className="text-app-primary-lm-blue-desaturated order-1 md:order-2">
               Joined&nbsp;
               {new Date(gitHubUser.created_at).toLocaleDateString('de-de')}
             </span>
@@ -101,7 +103,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
           </div>
         </div>
 
-        <div className="grid gap-4 grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           <div
             className={`flex items-start gap-5 ${
               !gitHubUser.location ? 'opacity-50' : ''

@@ -40,7 +40,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="grid gap-9">
+      <main className="grid gap-9 mt-8 sm:mt-36">
         <TheHeader />
 
         <section className="grid gap-6">
