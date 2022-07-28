@@ -16,10 +16,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="grid gap-9">
         <TheHeader />
-        <SearchBar />
-        <GitHubUserCard />
+
+        <section className="grid gap-6">
+          <SearchBar />
+          <GitHubUserCard />
+        </section>
       </main>
     </div>
   );

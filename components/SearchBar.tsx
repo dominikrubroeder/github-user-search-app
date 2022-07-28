@@ -3,7 +3,7 @@ import IconSearch from './icons/IconSearch';
 
 const SearchBar = () => {
   return (
-    <div className="flex items-center bg-white p-2.5 gap-8 rounded-xl max-w-screen-md m-auto">
+    <div className="flex items-center bg-white p-2.5 gap-8 rounded-xl max-w-screen-md m-auto w-full">
       <div className="pl-8">
         <IconSearch />
       </div>

@@ -6,14 +6,14 @@ import IconTwitter from './icons/IconTwitter';
 
 const GitHubUserCard = () => {
   return (
-    <div className="flex items-center bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto">
+    <div className="flex items-center bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full">
       <div className="rounded-full w-28 h-28">Image</div>
 
-      <div className="flex-1">
-        <div className="grid gap-2 mb-5">
+      <div className="grid gap-5 flex-1">
+        <div>
           <header className="flex items-center justify-between gap-2">
-            <h1>The Ocotocat</h1>
-            <span className="text-app-lm-primary-blue-desaturated">
+            <h1 className="font-bold text-[1.625rem]">The Ocotocat</h1>
+            <span className="text-app-primary-lm-blue-desaturated">
               Joined 25 Jan 2011
             </span>
           </header>
@@ -48,7 +48,7 @@ const GitHubUserCard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2">
+        <div className="grid gap-4 grid-cols-2">
           <div className="flex items-center gap-5">
             <IconLocation />
             <span>San Francisco</span>
