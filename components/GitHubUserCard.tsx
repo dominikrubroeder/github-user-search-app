@@ -1,10 +1,15 @@
 import React from 'react';
+import { IGitHubUser } from '../data/data';
 import IconCompany from './icons/IconCompany';
 import IconLink from './icons/IconLink';
 import IconLocation from './icons/IconLocation';
 import IconTwitter from './icons/IconTwitter';
 
-const GitHubUserCard = () => {
+interface GitHubUserCardProps {
+  gitHubUser: IGitHubUser | undefined;
+}
+
+const GitHubUserCard: React.FC<GitHubUserCardProps> = ({ gitHubUser }) => {
   return (
     <div className="flex items-center bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full">
       <div className="rounded-full w-28 h-28">Image</div>
@@ -12,7 +17,9 @@ const GitHubUserCard = () => {
       <div className="grid gap-5 flex-1">
         <div>
           <header className="flex items-center justify-between gap-2">
-            <h1 className="font-bold text-[1.625rem]">The Ocotocat</h1>
+            <h1 className="font-bold text-[1.625rem]">
+              {gitHubUser ? gitHubUser.name : 'The Ocotocat'}
+            </h1>
             <span className="text-app-primary-lm-blue-desaturated">
               Joined 25 Jan 2011
             </span>

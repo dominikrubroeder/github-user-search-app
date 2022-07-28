@@ -1,10 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 import GitHubUserCard from '../components/GitHubUserCard';
 import SearchBar from '../components/SearchBar';
 import TheHeader from '../components/TheHeader';
+import { IGitHubUser } from '../data/data';
 
 const Home: NextPage = () => {
+  const [gitHubUserData, setGitHubUserData] = useState<IGitHubUser | undefined>(
+    undefined
+  );
+
   return (
     <div>
       <Head>
@@ -20,8 +26,8 @@ const Home: NextPage = () => {
         <TheHeader />
 
         <section className="grid gap-6">
-          <SearchBar />
-          <GitHubUserCard />
+          <SearchBar onSubmit={setGitHubUserData} />
+          <GitHubUserCard gitHubUser={gitHubUserData} />
         </section>
       </main>
     </div>
