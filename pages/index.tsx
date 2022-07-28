@@ -9,9 +9,19 @@ import { IGitHubUser, defaultGitHubUser } from '../data/data';
 const Home: NextPage = () => {
   const [gitHubUser, setGitHubUser] = useState<IGitHubUser>(defaultGitHubUser);
   const [gitHubUserWasFound, setGitHubUserWasFound] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
-  const onSubmitHandler = (gitHubUser: IGitHubUser, wasFound: boolean) => {
-    if (!wasFound) setGitHubUserWasFound(false);
+  const onSubmitHandler = (
+    gitHubUser: IGitHubUser,
+    wasFound: boolean,
+    searchValue?: string
+  ) => {
+    if (!wasFound) {
+      setGitHubUserWasFound(false);
+
+      if (searchValue) setSearchValue(searchValue);
+    }
 
     if (wasFound) {
       setGitHubUserWasFound(true);
@@ -34,10 +44,12 @@ const Home: NextPage = () => {
         <TheHeader />
 
         <section className="grid gap-6">
-          <SearchBar onSubmit={onSubmitHandler} />
+          <SearchBar onSubmit={onSubmitHandler} setIsLoading={setIsLoading} />
           <GitHubUserCard
             gitHubUser={gitHubUser}
             gitHubUserWasFound={gitHubUserWasFound}
+            isLoading={isLoading}
+            searchValue={searchValue}
           />
         </section>
       </main>

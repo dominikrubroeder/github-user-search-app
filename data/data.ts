@@ -54,7 +54,7 @@ export const defaultGitHubUser: IGitHubUser = {
     'https://api.github.com/users/theoctocat/received_events',
   type: 'Organization',
   site_admin: false,
-  name: null,
+  name: 'The Octocat',
   company: 'GitHub',
   blog: '',
   location: 'San Francisco',

@@ -1,12 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import IconSearch from './icons/IconSearch';
 import { IGitHubUser, defaultGitHubUser } from '../data/data';
 
 interface SearchBarProps {
-  onSubmit: (gitHubUserData: IGitHubUser, wasFound: boolean) => void;
+  onSubmit: (
+    gitHubUserData: IGitHubUser,
+    wasFound: boolean,
+    searchValue?: string
+  ) => void;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSubmit, setIsLoading }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,6 +31,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
 
     let data;
 
+    setIsLoading(true);
+
     try {
       const response = await fetch(
         `https://api.github.com/users/${searchValue}`
@@ -33,12 +40,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
 
       data = await response.json();
 
+      setIsLoading(false);
+
       inputRef.current.value = '';
     } catch (error) {
       console.log(error);
     }
 
-    if (data.message) onSubmit(defaultGitHubUser, false);
+    if (data.message) onSubmit(defaultGitHubUser, false, searchValue);
 
     if (!data.message) onSubmit(data, true);
   };

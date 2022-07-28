@@ -5,19 +5,36 @@ import IconCompany from './icons/IconCompany';
 import IconLink from './icons/IconLink';
 import IconLocation from './icons/IconLocation';
 import IconTwitter from './icons/IconTwitter';
+import LoadingSpinner from './LoadingSpinner';
 
 interface GitHubUserCardProps {
   gitHubUser: IGitHubUser;
   gitHubUserWasFound: boolean;
+  isLoading: boolean;
+  searchValue: string;
 }
 
 const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
   gitHubUser,
   gitHubUserWasFound,
+  isLoading,
+  searchValue,
 }) => {
   const notAvailable = 'Not available';
 
-  if (!gitHubUserWasFound) return <div>Not found.</div>;
+  if (isLoading)
+    return (
+      <div className="p-2 rounded-full bg-app-primary-blue-saturated m-auto">
+        <LoadingSpinner />
+      </div>
+    );
+
+  if (!isLoading && !gitHubUserWasFound)
+    return (
+      <div className="m-auto">
+        <span className="font-bold">{searchValue}</span> was not found.
+      </div>
+    );
 
   return (
     <div className="flex items-start bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full">
