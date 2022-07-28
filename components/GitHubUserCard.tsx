@@ -37,7 +37,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
     );
 
   return (
-    <div className="relative bg-white p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale md:m-auto md:w-full md:flex md:items-start md:p-12">
+    <div className="relative bg-white dark:bg-app-primary-dm-blue-dark p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale dark:text-white md:m-auto md:w-full md:flex md:items-start md:p-12">
       <div className="absolute right-4 top-4 md:relative">
         <div className="relative rounded-full w-[4.375rem] h-[4.375rem] md:w-28 md:h-28">
           <Image
@@ -74,9 +74,9 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
             : gitHubUser.bio}
         </p>
 
-        <div className="flex items-start justify-between gap-1 rounded-xl bg-app-neutral-gray-lightest p-4 w-full">
+        <div className="flex items-start justify-between gap-1 rounded-xl bg-app-neutral-gray-lightest p-4 w-full dark:text-white dark:bg-app-primary-dm-gray-dark">
           <div>
-            <h3 className="text-app-primary-lm-blue-desaturated text-xs">
+            <h3 className="text-app-primary-lm-blue-desaturated dark:text-white text-xs">
               Repos
             </h3>
             <div className="font-bold text-[1.375rem]">
@@ -85,7 +85,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
           </div>
 
           <div>
-            <h3 className="text-app-primary-lm-blue-desaturated text-xs">
+            <h3 className="text-app-primary-lm-blue-desaturated dark:text-white text-xs">
               Followers
             </h3>
             <div className="font-bold text-[1.375rem]">
@@ -94,7 +94,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
           </div>
 
           <div>
-            <h3 className="text-app-primary-lm-blue-desaturated text-xs">
+            <h3 className="text-app-primary-lm-blue-desaturated dark:text-white text-xs">
               Following
             </h3>
             <div className="font-bold text-[1.375rem]">
