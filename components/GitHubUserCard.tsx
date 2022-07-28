@@ -37,7 +37,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
     );
 
   return (
-    <div className="flex items-start bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full">
+    <div className="flex items-start bg-white p-12 gap-8 rounded-xl max-w-screen-md m-auto w-full animate-scale">
       <div className="relative rounded-full w-28 h-28">
         <Image
           src={gitHubUser.avatar_url}

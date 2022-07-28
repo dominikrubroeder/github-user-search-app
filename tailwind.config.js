@@ -15,6 +15,16 @@ module.exports = {
         'app-primary-dm-gray-dark': 'hsl(220, 40%, 13%)',
         'app-primary-dm-blue-dark': 'hsl(222, 41%, 20%)',
       },
+      keyframes: {
+        scale: {
+          '0%': { opacity: '0', transform: 'scale(0.6)' },
+          '80%': { opacity: '0.8', transform: 'scale(1.05)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        scale: 'scale .4s ease-out forwards',
+      },
     },
   },
   plugins: [],
