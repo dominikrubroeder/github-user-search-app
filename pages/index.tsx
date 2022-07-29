@@ -35,9 +35,9 @@ const Home: NextPage = () => {
         <title>Github user search | frontendmentor.io</title>
         <meta
           name="description"
-          content="Github user search | frontendmentor.io"
+          content="Github user search | frontend challenge by frontendmentor.io, solution by Dominik Rubröder"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/images/favicon-32x32.png" />
       </Head>
 
       <main className="grid gap-9 pt-8 sm:pt-36">
