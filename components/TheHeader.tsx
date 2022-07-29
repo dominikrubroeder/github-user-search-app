@@ -9,7 +9,7 @@ const TheHeader: React.FC = () => {
 
   return (
     <header className="flex items-center justify-between max-w-screen-md mx-4 md:m-auto md:w-full">
-      <div className="font-bold text-[1.625rem]">devfinder</div>
+      <div className="font-bold text-[1.625rem] dark:text-white">devfinder</div>
       <button
         className="flex items-center gap-4"
         onClick={themeCtx.toggleTheme}
@@ -22,7 +22,10 @@ const TheHeader: React.FC = () => {
 
         {themeCtx.theme === Theme.DARK && (
           <>
-            <span className="uppercase tracking-widest">Light</span> <IconSun />
+            <span className="uppercase tracking-widest dark:text-white">
+              Light
+            </span>{' '}
+            <IconSun />
           </>
         )}
       </button>

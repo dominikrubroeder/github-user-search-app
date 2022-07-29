@@ -53,7 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit, setIsLoading }) => {
   };
 
   return (
-    <div className="flex items-center gap-4 bg-white p-2.5 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 md:gap-8 md:m-auto md:w-full">
+    <div className="flex items-center gap-4 bg-white p-2.5 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 dark:bg-app-primary-dm-blue-dark dark:shadow-none md:gap-8 md:m-auto md:w-full">
       <div className="pl-4 md:pl-8">
         <IconSearch />
       </div>
@@ -63,7 +63,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit, setIsLoading }) => {
       >
         <input
           placeholder="Search GitHub username..."
-          className="flex-1 focus:outline-none"
+          className="flex-1 bg-transparent focus:outline-none dark:text-white"
           ref={inputRef}
         />
         <button

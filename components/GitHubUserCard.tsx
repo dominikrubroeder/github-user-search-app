@@ -37,7 +37,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
     );
 
   return (
-    <div className="relative bg-white dark:bg-app-primary-dm-blue-dark p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale dark:text-white md:m-auto md:w-full md:flex md:items-start md:p-12">
+    <div className="relative bg-white dark:bg-app-primary-dm-blue-dark p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale dark:text-white dark:shadow-none md:m-auto md:w-full md:flex md:items-start md:p-12">
       <div className="absolute right-4 top-4 md:relative">
         <div className="relative rounded-full w-[4.375rem] h-[4.375rem] md:w-28 md:h-28">
           <Image
@@ -55,7 +55,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
             <h1 className="font-bold text-[1.625rem] order-2 md:order-1">
               {gitHubUser.name ? gitHubUser.name : gitHubUser.login}
             </h1>
-            <span className="text-app-primary-lm-blue-desaturated order-1 md:order-2">
+            <span className="text-app-primary-lm-blue-desaturated order-1 dark:text-white md:order-2">
               Joined&nbsp;
               {new Date(gitHubUser.created_at).toLocaleDateString('de-de')}
             </span>
@@ -68,7 +68,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
           </h2>
         </div>
 
-        <p className="text-app-primary-lm-blue-desaturated">
+        <p className="text-app-primary-lm-blue-desaturated dark:text-white">
           {gitHubUser.bio === '' || gitHubUser.bio === null
             ? 'This user has no bio.'
             : gitHubUser.bio}

@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-app-neutral-gray-lightest dark:bg-app-primary-dm-gray-dark">
       <Head>
         <title>Github user search | frontendmentor.io</title>
         <meta
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="grid gap-9 mt-8 sm:mt-36">
+      <main className="grid gap-9 pt-8 sm:pt-36">
         <TheHeader />
 
         <section className="grid gap-6">
