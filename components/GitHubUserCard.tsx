@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import React from 'react';
-import { IGitHubUser } from '../data/data';
+import React, { useContext } from 'react';
+import { IGitHubUser, Theme } from '../data/data';
+import { ThemeContext } from '../store/ThemeContext';
 import IconCompany from './icons/IconCompany';
 import IconLink from './icons/IconLink';
 import IconLocation from './icons/IconLocation';
@@ -20,7 +21,9 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
   isLoading,
   searchValue,
 }) => {
+  const themeCtx = useContext(ThemeContext);
   const notAvailable = 'Not available';
+  const iconFill = themeCtx.theme === Theme.DARK ? '#fff' : '#4b6a9b';
 
   if (isLoading)
     return (
@@ -31,13 +34,13 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
 
   if (!isLoading && !gitHubUserWasFound)
     return (
-      <div className="m-auto">
+      <div className="m-auto dark:text-white">
         <span className="font-bold">{searchValue}</span> was not found.
       </div>
     );
 
   return (
-    <div className="relative bg-white dark:bg-app-primary-dm-blue-dark p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale dark:text-white dark:shadow-none md:m-auto md:w-full md:flex md:items-start md:p-12">
+    <div className="relative bg-white dark:bg-app-primary-dm-blue-dark p-6 gap-8 rounded-xl max-w-screen-md mx-4 shadow-2xl shadow-app-primary-lm-blue-desaturated/20 animate-scale dark:shadow-none md:m-auto md:w-full md:flex md:items-start md:p-12">
       <div className="absolute right-4 top-4 md:relative">
         <div className="relative rounded-full w-[4.375rem] h-[4.375rem] md:w-28 md:h-28">
           <Image
@@ -52,7 +55,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
       <div className="grid gap-5 flex-1">
         <div>
           <header className="flex flex-col mt-4 md:mt-0 md:flex-row md:items-center md:justify-between md:gap-2">
-            <h1 className="font-bold text-[1.625rem] order-2 md:order-1">
+            <h1 className="font-bold text-[1.625rem] order-2 md:order-1 dark:text-white">
               {gitHubUser.name ? gitHubUser.name : gitHubUser.login}
             </h1>
             <span className="text-app-primary-lm-blue-desaturated order-1 dark:text-white md:order-2">
@@ -74,12 +77,12 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
             : gitHubUser.bio}
         </p>
 
-        <div className="flex items-start justify-between gap-1 rounded-xl bg-app-neutral-gray-lightest p-4 w-full dark:text-white dark:bg-app-primary-dm-gray-dark">
+        <div className="flex items-start justify-between gap-1 rounded-xl bg-app-neutral-gray-lightest p-4 w-full dark:bg-app-primary-dm-gray-dark">
           <div>
             <h3 className="text-app-primary-lm-blue-desaturated dark:text-white text-xs">
               Repos
             </h3>
-            <div className="font-bold text-[1.375rem]">
+            <div className="font-bold text-[1.375rem] dark:text-white">
               {gitHubUser.public_repos}
             </div>
           </div>
@@ -88,7 +91,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
             <h3 className="text-app-primary-lm-blue-desaturated dark:text-white text-xs">
               Followers
             </h3>
-            <div className="font-bold text-[1.375rem]">
+            <div className="font-bold text-[1.375rem] dark:text-white">
               {gitHubUser.followers}
             </div>
           </div>
@@ -97,7 +100,7 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
             <h3 className="text-app-primary-lm-blue-desaturated dark:text-white text-xs">
               Following
             </h3>
-            <div className="font-bold text-[1.375rem]">
+            <div className="font-bold text-[1.375rem] dark:text-white">
               {gitHubUser.following}
             </div>
           </div>
@@ -109,8 +112,9 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
               !gitHubUser.location ? 'opacity-50' : ''
             }`}
           >
-            <IconLocation />
-            <span>
+            <IconLocation fill={iconFill} />
+
+            <span className="dark:text-white">
               {gitHubUser.location ? gitHubUser.location : notAvailable}
             </span>
           </div>
@@ -120,8 +124,9 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
               !gitHubUser.twitter_username ? 'opacity-50' : ''
             }`}
           >
-            <IconTwitter />
-            <span>
+            <IconTwitter fill={iconFill} />
+
+            <span className="dark:text-white">
               {gitHubUser.twitter_username
                 ? gitHubUser.twitter_username
                 : notAvailable}
@@ -133,18 +138,22 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
               !gitHubUser.blog || gitHubUser.blog === '' ? 'opacity-50' : ''
             }`}
           >
-            <IconLink />
+            <IconLink fill={iconFill} />
+
             {gitHubUser.blog && (
               <a
                 href={`https://${gitHubUser.blog}`}
                 target="_blank"
                 rel="noreferrer"
+                className="dark:text-white"
               >
                 {gitHubUser.blog}
               </a>
             )}
 
-            {!gitHubUser.blog && <span>{notAvailable}</span>}
+            {!gitHubUser.blog && (
+              <span className="dark:text-white">{notAvailable}</span>
+            )}
           </div>
 
           <div
@@ -154,8 +163,8 @@ const GitHubUserCard: React.FC<GitHubUserCardProps> = ({
                 : ''
             }`}
           >
-            <IconCompany />
-            <span>@{gitHubUser.company}</span>
+            <IconCompany fill={iconFill} />
+            <span className="dark:text-white">@{gitHubUser.company}</span>
           </div>
         </div>
       </div>

@@ -79,3 +79,7 @@ export type ThemeContextType = {
   theme: string;
   toggleTheme: () => void;
 };
+
+export interface IconProps {
+  fill?: string;
+}

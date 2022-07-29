@@ -56,3 +56,9 @@
     font-family: 'Space Mono';
   }
 }
+
+@layer components {
+  body * {
+    @apply transition duration-700;
+  }
+}
